@@ -1,0 +1,16 @@
+CC ?= gcc
+CFLAGS = -Wall -Wextra -Werror -std=c99 -pedantic
+CPPFLAGS = -Isrc
+SRC = \
+       src/main.c \
+       src/lexer/lexer.c \
+       src/parser/parser.c
+
+OBJ = $(SRC:.c=.o)
+
+42sh: $(OBJ)
+       $(CC) -o $@ $^
+
+clean: $(OBJ) 42sh
+       rm $(OBJ)
+       rm 42sh
